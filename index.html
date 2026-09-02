@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daily Planner</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <header>
+    <h1>Daily Planner</h1>
+    <div id="status">Ładowanie...</div>
+  </header>
+
+  <main>
+    <section class="auth">
+      <label>Wklej Personal Access Token (tylko na czas sesji):</label>
+      <input id="pat" type="password" placeholder="ghp_...">
+      <button id="btnSetToken">Ustaw token</button>
+      <button id="btnLogout">Wyloguj</button>
+      <p class="note">Token NIE jest zapisywany w localStorage. Potrzebny jest zakres <code>public_repo</code> (dla publicznego repo) lub <code>repo</code> (dla prywatnego).</p>
+    </section>
+
+    <section class="controls">
+      <label>Data: <input id="date" type="date"></label>
+      <button id="btnLoad">Wczytaj dzień</button>
+      <button id="btnSave">Zapisz dzień</button>
+    </section>
+
+    <section class="panel">
+      <h2>Zadania</h2>
+      <div class="add-row">
+        <input id="taskText" placeholder="Nowe zadanie">
+        <button id="btnAddTask">Dodaj</button>
+      </div>
+      <ul id="tasks"></ul>
+
+      <h2>Kroki</h2>
+      <input id="steps" type="number" min="0" value="0">
+
+      <h2>Czytanie</h2>
+      <div class="add-row">
+        <input id="bookTitle" placeholder="Tytuł książki">
+        <input id="bookPages" type="number" min="0" placeholder="Ile stron">
+        <button id="btnAddReading">Dodaj</button>
+      </div>
+      <ul id="reading"></ul>
+
+      <h2>Trening</h2>
+      <div class="add-row">
+        <select id="workoutType">
+          <option value="run">Bieg</option>
+          <option value="gym">Siłownia</option>
+          <option value="other">Inne</option>
+        </select>
+        <input id="workoutNotes" placeholder="Uwagi / dystans / czas">
+        <button id="btnAddWorkout">Dodaj</button>
+      </div>
+      <ul id="workouts"></ul>
+
+      <h2>Pomiary</h2>
+      <div class="grid">
+        <label>Waga (kg)<input id="weight" type="number" step="0.1"></label>
+        <label>Tłuszcz (%)<input id="fat" type="number" step="0.1"></label>
+        <label>Mięśnie (kg)<input id="muscle" type="number" step="0.1"></label>
+        <label>Białko (g)<input id="protein" type="number" step="1"></label>
+        <label>Kalorie<input id="calories" type="number" step="1"></label>
+      </div>
+
+      <h2>Finanse (szybkie)</h2>
+      <div class="grid">
+        <label>Konto (PLN)<input id="konto" type="number" step="0.01"></label>
+        <label>Oszczędności (PLN)<input id="oszcz" type="number" step="0.01"></label>
+        <label>Akcje (PLN)<input id="akcje" type="number" step="0.01"></label>
+      </div>
+
+      <h2>Notatki</h2>
+      <textarea id="notes" rows="4"></textarea>
+    </section>
+
+    <section>
+      <h2>Plik danych</h2>
+      <pre id="raw" class="raw"></pre>
+    </section>
+  </main>
+
+  <script src="/src/app.js"></script>
+</body>
+</html>
