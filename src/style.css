@@ -1,9 +1,10 @@
 /* name=src/style.css */
-/* Small custom overrides to fit Bootstrap theme */
-body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
-.card { border-radius: 12px; }
-.navbar-brand { font-weight:600; }
-#raw { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace; }
-@media (max-width: 575px) {
-  #raw { max-height: 160px; }
-}
+:root{--accent:#0d6efd}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#f4f6fb}
+.card{border-radius:12px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.cal-day{background:white;border-radius:8px;padding:10px;min-height:90px;box-shadow:0 1px 2px rgba(16,24,40,.04);cursor:pointer}
+.cal-day .daynum{font-weight:600}
+.cal-day .meta{font-size:12px;color:#6b7280;margin-top:6px}
+.btn-small{padding:.25rem .5rem;font-size:.8rem}
+#dayPanel .list-group-item{display:flex;justify-content:space-between;align-items:center}

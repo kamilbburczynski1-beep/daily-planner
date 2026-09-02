@@ -1,29 +1,19 @@
-# Daily Planner
+# Daily Planner — rozbudowana wersja
 
-Aplikacja "Daily Planner" działa jako statyczna strona hostowana na GitHub Pages i zapisuje dane do pliku `data/data.json` w tym repozytorium.
+Ta wersja zawiera:
+- Kalendarz z możliwością otwarcia pojedynczego dnia
+- Zakładki: Zadania, Kroki, Finanse, Książki, Statystyki, Backup/Import
+- System zapisu per-entry: `data/days/YYYY-MM-DD.json` dla dni oraz `data/finance/entries.json` dla transakcji
+- Import CSV dla finansów oraz prosty backup JSON
 
-Jak to działa
-- Interfejs działa całkowicie w przeglądarce (HTML/CSS/JS).
-- Aby zapisać zmiany do repo, aplikacja wykorzystuje GitHub REST API i wymaga jednorazowego Personal Access Token (PAT) wklejonego przez użytkownika podczas sesji.
-- Token jest trzymany tylko w pamięci (nie zapisywany w localStorage) i używany do wywołań API.
+Autoryzacja
+- Aplikacja używa krótkotrwałego Personal Access Token (PAT) wklejanego przez użytkownika tylko na czas sesji.
+- Token NIE jest zapisywany w localStorage — trzymany jest tylko w pamięci JS.
 
-Zalecane uprawnienia tokena
-- Dla publicznego repo: wydać token z zakresem `public_repo`.
-- Dla prywatnego repo: wymagany jest zakres `repo`.
+Uruchomienie
+1. Włącz GitHub Pages (branch: main, folder: /).  
+2. Otwórz stronę i wklej PAT (scope: public_repo lub repo jeśli repo prywatne).  
+3. Używaj formularzy. Każde dodanie tworzy/aktualizuje pliki w katalogu data/ w repo (commit w Twoim imieniu, jeśli token ma access).
 
-Generowanie tokena
-1. Otwórz https://github.com/settings/tokens
-2. Wybierz "Generate new token" → nadaj nazwę i zaznacz `public_repo` (lub `repo` dla prywatnego)
-3. Skopiuj token i wklej go w polu na stronie aplikacji (tylko na czas sesji).
-
-Pliki w repo
-- index.html — UI
-- src/app.js — logika aplikacji i integracja z GitHub API
-- src/style.css — proste style
-- data/data.json — plik danych (app tworzy go automatycznie, jeśli nie istnieje)
-
-Bezpieczeństwo
-- PAT ma pełne uprawnienia do zapisu w repo — nie przechowuj go w niepewnych miejscach.
-- Po zakończeniu sesji usuń token (przycisk Wyloguj) lub usuń token w ustawieniach GitHub.
-
-Jeśli chcesz, mogę później przekształcić zapis tak, by używać bezpiecznego backendu (Cloudflare Workers / Netlify Functions), gdzie token nie musiałby być manipulowany przez użytkownika.
+Dalsze kroki
+- Mogę dodać: automatyczne agregacje miesięczne, kalendarz z drag&drop (FullCalendar), wykresy bardziej zaawansowane, eksport CSV, filtrowanie i wyszukiwanie oraz backupy per-entry.
